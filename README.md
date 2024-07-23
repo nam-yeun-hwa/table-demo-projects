@@ -56,7 +56,7 @@ No overload matches this call.
 BasicTypeTable.tsx(19, 40): This type parameter might need an extends {} constraint.
 BasicTypeTable.tsx(19, 40): This type parameter might need an extends object constraint. 해결법이 무엇인가요
 ```
-테이블 컴포넌트를 사용시 각각의 데이터 타입이 모두 다른 터라 T 제너릭을 이용하기로 하고 아래와 같이 코딩 하였으나 위 오류가 발생 하였다.
+테이블 컴포넌트를 사용시 각각의 데이터 타입이 모두 다른 터라 T 제너릭(객체의 타입을 동적으로 설정)을 이용하기로 하고 아래와 같이 코딩 하였으나 위 오류가 발생 하였다.
 ```
 const columns: Array<headerType> = [
   {
