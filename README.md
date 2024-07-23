@@ -155,7 +155,40 @@ export default function BasicTypeTable<T>({
 }
 
 ```
-오류 메시지에 따르면 T가 빈 객체 타입 {} 또는 object를 상속하도록 명시하라는 내용으로 해결 방법은 T 타입 매개변수에 제약 조건을 추가해 주도록 하였다.
+오류 메시지에 따르면 T가 빈 객체 타입 { } 또는 object를 상속하도록 명시하라는 내용으로 해결 방법은 T 타입 <b>매개변수에 제약 조건을 추가</b>해 주도록 하였다.
 
-리액트 컴포넌트 BasicTypeTable에서 타입 매개변수 T는 제네릭 타입으로, 이 제네릭 타입 T는 객체 타입이어야 하며, 그 객체는 <b>문자열 키와 임의의 값(any)을 가지는 프로퍼티를 포함</b>해야 한다.
-
+```
+export default function BasicTypeTable<T extends { [key: string]: any }>({
+  columns,
+  data,
+}: TableProps<T>) {
+  useEffect(() => {
+    console.log(columns, data);
+  }, [columns, data]);
+  return (
+    <>
+      <table>
+        <thead>
+          <tr>
+            {columns.map((v) => {
+              return <th key={v.accessorKey}>{v.header}</th>;
+            })}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((v, key) => {
+            return (
+              <tr key={key}>
+                {Object.entries(v).map(([key, value]) => (
+                  <td key={key}>{value}</td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </>
+  );
+}
+```
+위 내용을 참고하여 타입 매개변수 T는 제네릭 타입으로, 이 제네릭 타입 T는 객체 타입이어야 하며, 그 객체는 <b>문자열 키와 임의의 값(any)을 가지는 프로퍼티를 포함</b>하도록 수정해 주었다.
