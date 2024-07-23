@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect } from "react";
 
 type headerType = {
@@ -16,11 +18,35 @@ type TableProps<T> = {
   data: Array<T>;
 };
 
-// props: IGridProps<T>;
-
-export default function BasicTypeTable<T>({ columns, data }: TableProps<T>) {
+export default function BasicTypeTable<T extends { [key: string]: any }>({
+  columns,
+  data,
+}: TableProps<T>) {
   useEffect(() => {
     console.log(columns, data);
   }, [columns, data]);
-  return <></>;
+  return (
+    <>
+      <table>
+        <thead>
+          <tr>
+            {columns.map((v) => {
+              return <th key={v.accessorKey}>{v.header}</th>;
+            })}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((v, key) => {
+            return (
+              <tr key={key}>
+                {Object.entries(v).map(([key, value]) => (
+                  <td key={key}>{value}</td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </>
+  );
 }
