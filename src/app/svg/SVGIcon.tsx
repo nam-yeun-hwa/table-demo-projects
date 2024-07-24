@@ -9,10 +9,11 @@ function TablerIconSortByDecending() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className="tabler-icon tabler-icon-sort-descending"
+      color="#bfc3c7"
     >
       <path d="M4 6l9 0"></path>
       <path d="M4 12l7 0"></path>
@@ -32,10 +33,11 @@ function TablerIconSortByAscending() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className="tabler-icon tabler-icon-sort-ascending"
+      color="#bfc3c7"
     >
       <path d="M4 6l7 0"></path>
       <path d="M4 12l7 0"></path>
@@ -55,10 +57,11 @@ function TablerIconArrowsSort() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className="tabler-icon tabler-icon-arrows-sort"
+      color="#bfc3c7"
     >
       <path d="M3 9l4 -4l4 4m-4 -4v14"></path>
       <path d="M21 15l-4 4l-4 -4m4 4v-14"></path>

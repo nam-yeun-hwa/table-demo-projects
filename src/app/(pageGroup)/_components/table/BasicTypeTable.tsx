@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import HeaderAction from "./HeaderAction";
+import style from "app/(pageGroup)/_components/table/BasicTypeTable.module.css";
 
 type headerType = {
   accessorKey: string;
@@ -30,10 +31,12 @@ export default function BasicTypeTable<T extends { [key: string]: any }>({
     <>
       <table>
         <thead>
-          <tr>
+          <tr className={style.tr}>
             {columns.map((v) => {
               return (
-                <th key={v.accessorKey}>{<HeaderAction text={v.header} />}</th>
+                <th className={style.th} key={v.accessorKey}>
+                  {<HeaderAction text={v.header} />}
+                </th>
               );
             })}
           </tr>
