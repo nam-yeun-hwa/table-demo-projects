@@ -1,7 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BasicTypeTable from "./_components/table/BasicTypeTable";
+import {
+  sortNumbersAscending,
+  sortNumbersDescending,
+  sortStringAscending,
+} from "./utility/utility";
 
 type User = {
   id: number;
@@ -103,5 +108,26 @@ export default function page() {
     pageSize: 5,
   });
 
-  return <BasicTypeTable columns={columns} data={userData} />;
+  const [userArray, setUserArray] = useState<Array<User>>([...userData]);
+
+  /**
+   * @function onClickHeaderClick
+   * @param id
+   * @description 테이블 헤더 아이템 클릭시 SORT
+   */
+  const onClickHeaderClick = (accessorKey: string) => {
+    if (typeof accessorKey === "number") {
+      setUserArray(sortNumbersDescending(userArray, accessorKey));
+    } else if (typeof accessorKey === "string") {
+      setUserArray(sortStringAscending(userArray, accessorKey));
+    }
+  };
+
+  return (
+    <BasicTypeTable
+      columns={columns}
+      data={userArray}
+      headerSortFunc={onClickHeaderClick}
+    />
+  );
 }

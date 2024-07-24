@@ -18,15 +18,14 @@ type headerType = {
 type TableProps<T> = {
   columns: Array<headerType>;
   data: Array<T>;
+  headerSortFunc: (accessorKey: string) => void;
 };
 
 export default function BasicTypeTable<T extends { [key: string]: any }>({
   columns,
   data,
+  headerSortFunc,
 }: TableProps<T>) {
-  useEffect(() => {
-    console.log(columns, data);
-  }, [columns, data]);
   return (
     <>
       <table>
@@ -35,7 +34,13 @@ export default function BasicTypeTable<T extends { [key: string]: any }>({
             {columns.map((v) => {
               return (
                 <th className={style.th} key={v.accessorKey}>
-                  {<HeaderAction text={v.header} />}
+                  {
+                    <HeaderAction
+                      valueKey={v.accessorKey}
+                      text={v.header}
+                      onClick={headerSortFunc}
+                    />
+                  }
                 </th>
               );
             })}
