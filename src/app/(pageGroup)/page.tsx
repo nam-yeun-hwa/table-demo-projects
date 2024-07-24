@@ -6,6 +6,7 @@ import {
   sortNumbersAscending,
   sortNumbersDescending,
   sortStringAscending,
+  sortStringDescending,
 } from "./utility/utility";
 
 type User = {
@@ -108,6 +109,8 @@ export default function page() {
     pageSize: 5,
   });
 
+  const [toggleSortBool, setToggleSortBool] = useState(false);
+
   const [userArray, setUserArray] = useState<Array<User>>([...userData]);
 
   /**
@@ -116,10 +119,20 @@ export default function page() {
    * @description 테이블 헤더 아이템 클릭시 SORT
    */
   const onClickHeaderClick = (accessorKey: string) => {
-    if (typeof accessorKey === "number") {
-      setUserArray(sortNumbersDescending(userArray, accessorKey));
-    } else if (typeof accessorKey === "string") {
-      setUserArray(sortStringAscending(userArray, accessorKey));
+    if (toggleSortBool) {
+      if (typeof accessorKey === "number") {
+        setUserArray(sortNumbersDescending(userArray, accessorKey));
+      } else if (typeof accessorKey === "string") {
+        setUserArray(sortStringDescending(userArray, accessorKey));
+      }
+      setToggleSortBool(!toggleSortBool);
+    } else {
+      if (typeof accessorKey === "number") {
+        setUserArray(sortNumbersAscending(userArray, accessorKey));
+      } else if (typeof accessorKey === "string") {
+        setUserArray(sortStringAscending(userArray, accessorKey));
+      }
+      setToggleSortBool(!toggleSortBool);
     }
   };
 

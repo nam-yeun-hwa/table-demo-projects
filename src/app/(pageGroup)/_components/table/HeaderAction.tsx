@@ -6,7 +6,7 @@ type Props = {
   valueKey: string;
   text: string;
   btnType?: TABLE_ELEMENT_TYPE;
-  onClick: (clickItem: string) => void;
+  onClick: (valueKey: string) => void;
 };
 
 export default function HeaderAction({
