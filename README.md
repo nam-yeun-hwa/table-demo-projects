@@ -1,5 +1,5 @@
 # table-demo-project
-next.js를 이용하여 테이블 라이브러리를 만들어 보도록 한다.
+next.js를 이용하여 테이블 컴포넌트를 만들어 보도록 한다.
 
 1. 컨셉 테이블 라이브러리
 </br> https://www.mantine-react-table.com/docs/examples/basic 
