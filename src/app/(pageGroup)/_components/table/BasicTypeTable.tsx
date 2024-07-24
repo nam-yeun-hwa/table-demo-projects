@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import HeaderAction from "./HeaderAction";
 
 type headerType = {
   accessorKey: string;
@@ -31,7 +32,9 @@ export default function BasicTypeTable<T extends { [key: string]: any }>({
         <thead>
           <tr>
             {columns.map((v) => {
-              return <th key={v.accessorKey}>{v.header}</th>;
+              return (
+                <th key={v.accessorKey}>{<HeaderAction text={v.header} />}</th>
+              );
             })}
           </tr>
         </thead>

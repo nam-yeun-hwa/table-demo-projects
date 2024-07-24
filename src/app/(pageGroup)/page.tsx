@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import BasicTypeTable from "./_components/BasicTypeTable";
+import BasicTypeTable from "./_components/table/BasicTypeTable";
 
 type User = {
   id: number;

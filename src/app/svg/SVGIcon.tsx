@@ -66,7 +66,7 @@ function TablerIconArrowsSort() {
   );
 }
 
-function Icon(icon: TABLE_ICON) {
+export function SVGIcon(icon: TABLE_ICON) {
   switch (icon) {
     case TABLE_ICON.ICON_DESC:
       return <TablerIconSortByDecending />;
@@ -76,5 +76,3 @@ function Icon(icon: TABLE_ICON) {
       return <TablerIconArrowsSort />;
   }
 }
-
-export default Icon;
