@@ -100,7 +100,7 @@ const userData: Array<User> = [
 export default function page() {
   const [pagination, setPagination] = useState({
     pageIndex: 0,
-    pageSize: 5, //customize the default page size
+    pageSize: 5,
   });
 
   return <BasicTypeTable columns={columns} data={userData} />;
