@@ -44,7 +44,7 @@ export default function BasicTypeTable<T extends { [key: string]: any }>({
         <tbody>
           {data.map((v, key) => {
             return (
-              <tr key={key}>
+              <tr key={key} className={style.td}>
                 {Object.entries(v).map(([key, value]) => (
                   <td key={key}>{value}</td>
                 ))}

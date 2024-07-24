@@ -6,3 +6,8 @@
 
 .th svg {
 }
+
+.td {
+  text-align: center;
+  padding: 5px 0px;
+}
