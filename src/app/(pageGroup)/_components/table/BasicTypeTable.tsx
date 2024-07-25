@@ -4,6 +4,7 @@ import { ReactNode, useEffect } from "react";
 import HeaderAction from "./HeaderAction";
 import style from "app/(pageGroup)/_components/table/BasicTypeTable.module.css";
 import FilterBox from "./FilterBox";
+import { User } from "app/(pageGroup)/page";
 
 type headerType = {
   accessorKey: string;
@@ -21,7 +22,7 @@ type TableProps<T> = {
   data: Array<T>;
   onSortHandler: (accessorKey: string) => void;
   filterInputToggle: boolean;
-  onFilterHandler: (filterValue: string, filterId: string) => void;
+  onFilterHandler: (key: keyof User, value: string) => void;
 };
 
 export default function BasicTypeTable<T extends { [key: string]: any }>({

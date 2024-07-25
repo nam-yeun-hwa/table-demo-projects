@@ -1,8 +1,9 @@
+import { User } from "app/(pageGroup)/page";
 import { ChangeEvent, useState } from "react";
 
 type Props = {
   filterId: string;
-  onFilterHandler: (filterValue: string, filterId: string) => void;
+  onFilterHandler: (key: keyof User, value: string) => void;
 };
 
 export default function FilterBox({ onFilterHandler, filterId }: Props) {
@@ -13,7 +14,7 @@ export default function FilterBox({ onFilterHandler, filterId }: Props) {
       type="text"
       value={inputValue}
       onChange={(e) => {
-        onFilterHandler(e.target.value, filterId);
+        onFilterHandler(filterId as keyof User, e.target.value);
         setInputValue(e.target.value);
       }}
       required

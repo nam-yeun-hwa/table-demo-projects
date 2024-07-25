@@ -140,8 +140,14 @@ export default function page() {
     }
   };
 
-  const onFilterHandler = (key: string, value: string) => {
-    const temp = userData.filter((user) => user[key as keyof User] === value);
+  const onFilterHandler = (key: keyof User, value: string) => {
+    const temp = userData.filter((user) => {
+      const fieldValue = user[key];
+      if (typeof fieldValue === "string") {
+        return fieldValue.includes(value);
+      }
+      return false;
+    });
     console.log(temp);
   };
 
