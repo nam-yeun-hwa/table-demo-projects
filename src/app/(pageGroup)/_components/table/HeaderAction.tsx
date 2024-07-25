@@ -27,8 +27,10 @@ export default function HeaderAction({
 }: Props) {
   return (
     <div className={style.element} onClick={() => onClick(valueKey)}>
-      {text}
-      {SVGIcon(TABLE_ICON.ICON_ASC)}
+      <div className={style.txt}>
+        {text}
+        {SVGIcon(TABLE_ICON.ICON_ASC)}
+      </div>
       {filterInputToggle && children}
     </div>
   );
