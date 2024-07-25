@@ -112,7 +112,7 @@ export default function page() {
   });
   const [toggleSortBool, setToggleSortBool] = useState(false);
   const [userArray, setUserArray] = useState<Array<User>>([...userData]);
-  const [filterInputToggle, setFilterInputToggle] = useState(false);
+  const [filterInputToggle, setFilterInputToggle] = useState(true);
 
   /**
    * @function onClickHeaderClick
