@@ -11,7 +11,7 @@ import {
 import TogglePanel from "./_components/table/TogglePanel";
 import style from "app/(pageGroup)/page.module.css";
 
-type User = {
+export type User = {
   id: number;
   email: string;
   fullname: string;
@@ -140,8 +140,9 @@ export default function page() {
     }
   };
 
-  const onFilterHandler = (filterValue: string, filterId: string) => {
-    console.log(filterValue, filterId);
+  const onFilterHandler = (key: string, value: string) => {
+    const temp = userData.filter((user) => user[key as keyof User] === value);
+    console.log(temp);
   };
 
   return (
