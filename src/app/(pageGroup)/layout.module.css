@@ -8,13 +8,13 @@
 
 .sideRoot {
   position: relative;
-  width: 400px;
+  width: 250px;
   height: 100%;
   background-color: aquamarine;
 }
 
 .content {
-  width: calc(100% - 400px);
+  width: calc(100% - 250px);
   height: 100%;
   background-color: beige;
 }

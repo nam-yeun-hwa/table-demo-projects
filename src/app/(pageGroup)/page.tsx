@@ -8,6 +8,8 @@ import {
   sortStringAscending,
   sortStringDescending,
 } from "./utility/utility";
+import TogglePanel from "./_components/table/TogglePanel";
+import style from "app/(pageGroup)/page.module.css";
 
 type User = {
   id: number;
@@ -108,10 +110,9 @@ export default function page() {
     pageIndex: 0,
     pageSize: 5,
   });
-
   const [toggleSortBool, setToggleSortBool] = useState(false);
-
   const [userArray, setUserArray] = useState<Array<User>>([...userData]);
+  const [filterInputToggle, setFilterInputToggle] = useState(false);
 
   /**
    * @function onClickHeaderClick
@@ -119,6 +120,9 @@ export default function page() {
    * @description 테이블 헤더 아이템 클릭시 SORT
    */
   const onClickHeaderClick = (accessorKey: string) => {
+    // let temp = toggleSortBool ? "오름차순" : "내림차순";
+    // console.log(accessorKey, temp);
+
     if (toggleSortBool) {
       if (typeof accessorKey === "number") {
         setUserArray(sortNumbersDescending(userArray, accessorKey));
@@ -137,10 +141,16 @@ export default function page() {
   };
 
   return (
-    <BasicTypeTable
-      columns={columns}
-      data={userArray}
-      headerSortFunc={onClickHeaderClick}
-    />
+    <div className={style.wrapper}>
+      <div className={style.tableContainer}>
+        <TogglePanel />
+        <BasicTypeTable
+          columns={columns}
+          data={userArray}
+          headerSortFunc={onClickHeaderClick}
+          filterInputToggle={filterInputToggle}
+        />
+      </div>
+    </div>
   );
 }

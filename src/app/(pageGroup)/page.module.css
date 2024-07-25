@@ -1,0 +1,11 @@
+.wrapper {
+  flex-wrap: wrap;
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+}
+
+.tableContainer {
+  width: 80%;
+  margin-top: 40px;
+}
