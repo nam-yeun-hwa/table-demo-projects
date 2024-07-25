@@ -19,15 +19,17 @@ type headerType = {
 type TableProps<T> = {
   columns: Array<headerType>;
   data: Array<T>;
-  headerSortFunc: (accessorKey: string) => void;
+  onSortHandler: (accessorKey: string) => void;
   filterInputToggle: boolean;
+  onFilterHandler: (filterValue: string, filterId: string) => void;
 };
 
 export default function BasicTypeTable<T extends { [key: string]: any }>({
   columns,
   data,
-  headerSortFunc,
+  onSortHandler,
   filterInputToggle,
+  onFilterHandler,
 }: TableProps<T>) {
   return (
     <table className={style.table}>
@@ -40,10 +42,13 @@ export default function BasicTypeTable<T extends { [key: string]: any }>({
                   <HeaderAction
                     valueKey={v.accessorKey}
                     text={v.header}
-                    onClick={headerSortFunc}
+                    onClick={onSortHandler}
                     filterInputToggle={filterInputToggle}
                   >
-                    <FilterBox />
+                    <FilterBox
+                      onFilterHandler={onFilterHandler}
+                      filterId={v.accessorKey}
+                    />
                   </HeaderAction>
                 }
               </th>

@@ -119,7 +119,7 @@ export default function page() {
    * @param id
    * @description 테이블 헤더 아이템 클릭시 SORT
    */
-  const onClickHeaderClick = (accessorKey: string) => {
+  const onSortHandler = (accessorKey: string) => {
     // let temp = toggleSortBool ? "오름차순" : "내림차순";
     // console.log(accessorKey, temp);
 
@@ -140,6 +140,10 @@ export default function page() {
     }
   };
 
+  const onFilterHandler = (filterValue: string, filterId: string) => {
+    console.log(filterValue, filterId);
+  };
+
   return (
     <div className={style.wrapper}>
       <div className={style.tableContainer}>
@@ -147,8 +151,9 @@ export default function page() {
         <BasicTypeTable
           columns={columns}
           data={userArray}
-          headerSortFunc={onClickHeaderClick}
+          onSortHandler={onSortHandler}
           filterInputToggle={filterInputToggle}
+          onFilterHandler={onFilterHandler}
         />
       </div>
     </div>
