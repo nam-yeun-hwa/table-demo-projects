@@ -120,9 +120,6 @@ export default function page() {
    * @description 테이블 헤더 아이템 클릭시 SORT
    */
   const onSortHandler = (accessorKey: string) => {
-    // let temp = toggleSortBool ? "오름차순" : "내림차순";
-    // console.log(accessorKey, temp);
-
     if (toggleSortBool) {
       if (typeof accessorKey === "number") {
         setUserArray(sortNumbersDescending(userArray, accessorKey));
@@ -140,6 +137,11 @@ export default function page() {
     }
   };
 
+  /**
+   * @function onFilterHandler
+   * @param key userArray 키
+   * @param value 필터값 단어
+   */
   const onFilterHandler = (key: keyof User, value: string) => {
     const temp = userData.filter((user) => {
       const fieldValue = user[key];
