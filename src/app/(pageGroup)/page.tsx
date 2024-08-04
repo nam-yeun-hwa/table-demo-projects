@@ -12,10 +12,10 @@ import TogglePanel from "./_components/table/TogglePanel";
 import style from "app/(pageGroup)/page.module.css";
 
 export type User = {
-  id: number;
-  email: string;
-  fullname: string;
-  role: string;
+  id: number | undefined;
+  email: string | undefined;
+  fullname: string | undefined;
+  role: string | undefined;
 };
 
 type headerType = {
@@ -51,21 +51,21 @@ const userData: Array<User> = [
   },
   {
     id: 2,
-    email: "ddd@example.com",
+    email: "aaa@hanmail.net",
     fullname: "John Doe",
-    role: "b-employee",
+    role: "a-manager",
   },
   {
     id: 3,
-    email: "bbb@example.com",
+    email: "aaa@hanmail.net",
     fullname: "Jane Doe",
-    role: "c-employee",
+    role: "a-manager",
   },
   {
     id: 4,
     email: "ccc.smith@example.com",
     fullname: "Michael Smith",
-    role: "d-manager",
+    role: "a-manager",
   },
   {
     id: 5,
@@ -105,6 +105,10 @@ const userData: Array<User> = [
   },
 ];
 
+interface Filters {
+  [key: string]: string;
+}
+
 export default function page() {
   const [pagination, setPagination] = useState({
     pageIndex: 0,
@@ -113,6 +117,7 @@ export default function page() {
   const [toggleSortBool, setToggleSortBool] = useState(false);
   const [userArray, setUserArray] = useState<Array<User>>([...userData]);
   const [filterInputToggle, setFilterInputToggle] = useState(true);
+  const [filters, setFilters] = useState<Filters>({});
 
   /**
    * @function onClickHeaderClick
@@ -143,14 +148,12 @@ export default function page() {
    * @param value 필터값 단어
    */
   const onFilterHandler = (key: keyof User, value: string) => {
-    const temp = userData.filter((user) => {
-      const fieldValue = user[key];
-      if (typeof fieldValue === "string") {
-        return fieldValue.includes(value);
-      }
-      return false;
-    });
-    console.log(temp);
+    setFilters((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }));
+
+    console.log("filters", filters);
   };
 
   return (
