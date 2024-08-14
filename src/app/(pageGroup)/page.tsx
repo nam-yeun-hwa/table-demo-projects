@@ -106,7 +106,7 @@ const userData: Array<User> = [
 ];
 
 interface Filters {
-  [key: string]: string;
+  [key: string]: string | number;
 }
 
 export default function page() {
@@ -152,8 +152,34 @@ export default function page() {
       ...prevState,
       [key]: value,
     }));
+  };
 
-    console.log("filters", filters);
+  /**
+   * 테이블 속성값으로 필터링
+   */
+  useEffect(() => {
+    const filtered = userData.filter((item) => {
+      return Object.keys(filters).every((filterKey) => {
+        const filterValue = filters[filterKey as keyof User];
+        if (!filterValue) return true; // 필터 값이 없으면 모든 항목 통과
+        return item[filterKey as keyof User]
+          ?.toString()
+          .toLowerCase()
+          .includes(filterValue.toString().toLowerCase());
+      });
+    });
+
+    console.log("filtered", filtered);
+
+    setUserArray(filtered);
+  }, [filters]);
+
+  /**
+   * @function handleFilter
+   * @description 테이블 각각의 colum input filter에 따라 데이터 걸러내기
+   */
+  const handleFilter = () => {
+    const filteredItems = userData.filter((user) => {});
   };
 
   return (
